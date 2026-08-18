@@ -1,14 +1,11 @@
-package com.orderflow.kafka_risk_service.controller;
+package com.orderflow.matching_engine.controller;
 
-
-import com.orderflow.kafka_risk_service.disruptor.OrderPublisher;
-import com.orderflow.kafka_risk_service.order.Order;
-import com.orderflow.kafka_risk_service.risk.RiskCheckClient;
+import com.orderflow.matching_engine.disruptor.OrderPublisher;
+import com.orderflow.matching_engine.order.Order;
+import com.orderflow.matching_engine.risk.RiskCheckClient;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -26,12 +23,19 @@ public class OrderController {
         var orderValue = order.getPrice().multiply(order.getQuantity());
 
         if (!riskCheckClient.hasSufficientFunds(order.getAccountId(), orderValue)) {
-            throw new IllegalStateException("Order rejected: insufficient funds for account " + order.getAccountId());
+            throw new IllegalStateException(
+                    "Order rejected: insufficient funds for account " + order.getAccountId());
         }
 
         order.setOrderId(UUID.randomUUID().toString());
         order.setTimestamp(Instant.now());
         orderPublisher.publish(order);
         return order.getOrderId();
+    }
+
+    @ExceptionHandler(IllegalStateException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleRiskRejection(IllegalStateException e) {
+        return e.getMessage();
     }
 }

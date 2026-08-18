@@ -1,10 +1,8 @@
-package com.orderflow.kafka_risk_service.disruptor;
-
+package com.orderflow.matching_engine.disruptor;
 
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
-
-import com.orderflow.kafka_risk_service.order.Order;
+import com.orderflow.matching_engine.order.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -18,8 +16,7 @@ public class OrderPublisher {
         RingBuffer<OrderEvent> ringBuffer = disruptor.getRingBuffer();
         long sequence = ringBuffer.next();
         try {
-            OrderEvent event = ringBuffer.get(sequence);
-            event.setOrder(order);
+            ringBuffer.get(sequence).setOrder(order);
         } finally {
             ringBuffer.publish(sequence);
         }

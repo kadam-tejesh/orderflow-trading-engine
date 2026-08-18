@@ -1,9 +1,6 @@
-package com.orderflow.kafka_risk_service.gateway;
+package com.orderflow.matching_engine.gateway;
 
-
-
-
-import com.orderflow.kafka_risk_service.order.OrderBook;
+import com.orderflow.matching_engine.order.OrderBook;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -22,7 +19,7 @@ public class DepthBroadcaster {
     @Value("${orderflow.kafka.topic.order-book-updates}")
     private String orderBookTopic;
 
-    @Scheduled(fixedRate = 100) // every 100ms, per the Week 3 spec
+    @Scheduled(fixedRate = 100) // broadcasts every 100ms
     public void broadcastDepth() {
         var depth = Map.of(
                 "bids", orderBook.bidDepth(10),

@@ -1,8 +1,5 @@
-package com.orderflow.kafka_risk_service.risk;
+package com.orderflow.matching_engine.risk;
 
-
-
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,7 +7,6 @@ import java.math.BigDecimal;
 import java.util.Map;
 
 @Component
-@RequiredArgsConstructor
 public class RiskCheckClient {
 
     private final RestTemplate restTemplate = new RestTemplate();
@@ -22,9 +18,7 @@ public class RiskCheckClient {
             Map<?, ?> response = restTemplate.getForObject(url, Map.class);
             return response != null && Boolean.TRUE.equals(response.get("sufficientFunds"));
         } catch (Exception e) {
-            // Fail closed: if the risk service is unreachable, reject the order
-            // rather than silently letting an unchecked trade through.
-            return false;
+            return false; // fail closed: reject if the risk service is unreachable
         }
     }
 }
