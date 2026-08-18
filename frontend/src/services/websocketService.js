@@ -24,7 +24,10 @@ export function connectWebSocket({ onTradeReceived, onOrderBookUpdate, onConnect
       if (onOrderBookUpdate) {
         stompClient.subscribe('/topic/orderbook', (message) => {
           const depth = JSON.parse(message.body);
-          onOrderBookUpdate(depth);
+          onOrderBookUpdate({
+            bids: depth.bids || [],
+            asks: depth.asks || [],
+          });
         });
       }
     },
