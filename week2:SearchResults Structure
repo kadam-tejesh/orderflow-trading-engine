@@ -1,0 +1,14 @@
+React Dashboard
+│
+├── SearchBar / Query Interface  ← Namratha
+│
+├── SearchResults                ← YOUR WORK
+│   ├── LogTable
+│   ├── LogRow
+│   └── Pagination
+│
+└── API Response
+    ├── logs[]
+    ├── total
+    ├── page
+    └── pageSize
