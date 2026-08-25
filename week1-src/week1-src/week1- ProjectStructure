@@ -1,0 +1,22 @@
+logstream-dashboard/
+│
+├── public/
+│
+├── src/
+│   ├── components/
+│   │   ├── FilterDropdown.jsx
+│   │   ├── LogResultTable.jsx
+│   │   └── LogLevelBadge.jsx
+│   │
+│   ├── data/
+│   │   └── mockLogs.js
+│   │
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
+│
+├── .gitignore
+├── index.html
+├── package.json
+└── README.md
