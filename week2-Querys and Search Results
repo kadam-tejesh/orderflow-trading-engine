@@ -1,0 +1,27 @@
+
+
+**Query → Search Results → Rendering → Pagination**
+
+```text
+Namratha's Query Interface
+          ↓
+   Search Parameters
+          ↓
+       Search API
+          ↓
+   Your Frontend
+          ↓
+ ┌─────────────────────┐
+ │ Search Results Table │
+ │                     │
+ │ ID                  │
+ │ Timestamp           │
+ │ Level               │
+ │ Service             │
+ │ Message             │
+ │ Response Time       │
+ └─────────────────────┘
+          ↓
+      Pagination
+          ↓
+    Page 1 2 3 4 5...
