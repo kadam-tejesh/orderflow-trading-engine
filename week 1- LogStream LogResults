@@ -1,0 +1,22 @@
+                    LogStream
+          Distributed Log Analytics Platform
+
+                    Log Results
+             12 Results
+
+ ┌───────────────────────────────────────────────────────┐
+ │ Log Filters                                           │
+ │                                                       │
+ │ Service Name       Log Level                          │
+ │ [All Services ▼]   [All Levels ▼]   [Clear Filters] │
+ └───────────────────────────────────────────────────────┘
+
+ ┌───────────────────────────────────────────────────────┐
+ │ Application Logs                         ● Live Data  │
+ ├────────────┬────────┬──────────┬──────────┬──────────┤
+ │ Timestamp  │ Level  │ Service  │ Message  │ Response │
+ ├────────────┼────────┼──────────┼──────────┼──────────┤
+ │ 10:58:42   │ ERROR  │ payment  │ Gateway  │ 1250 ms  │
+ │ 10:58:40   │ INFO   │ auth     │ Login    │ 120 ms   │
+ │ 10:58:37   │ WARN   │ billing  │ Timeout  │ 850 ms   │
+ └────────────┴────────┴──────────┴──────────┴──────────┘
