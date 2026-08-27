@@ -1,0 +1,474 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: #0b1120;
+  color: #e5e7eb;
+}
+
+button,
+select {
+  font-family: inherit;
+}
+
+/* Main application */
+
+.app {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top right,
+      #172554 0,
+      #0b1120 35%
+    );
+}
+
+/* Header */
+
+.header {
+  height: 78px;
+  padding: 0 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(15, 23, 42, 0.92);
+  border-bottom: 1px solid #1e293b;
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.header p {
+  margin-top: 3px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.live-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+  background: #22c55e;
+
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+}
+
+/* Dashboard */
+
+.dashboard {
+  width: 94%;
+  max-width: 1500px;
+
+  margin: 0 auto;
+  padding: 35px 0 50px;
+}
+
+/* Title */
+
+.page-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+}
+
+.page-title h2 {
+  font-size: 26px;
+  color: #f8fafc;
+}
+
+.page-title p {
+  margin-top: 6px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.result-count {
+  padding: 8px 14px;
+
+  border: 1px solid #334155;
+  border-radius: 8px;
+
+  background: #111827;
+
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+/* Filter panel */
+
+.filter-panel {
+  padding: 20px;
+
+  margin-bottom: 22px;
+
+  background: rgba(15, 23, 42, 0.8);
+
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+}
+
+.filter-heading {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 18px;
+
+  color: #cbd5e1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.filter-icon {
+  color: #60a5fa;
+}
+
+.filters {
+  display: flex;
+  align-items: flex-end;
+
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  min-width: 240px;
+}
+
+.filter-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.filter-group select {
+  width: 100%;
+
+  padding: 11px 13px;
+
+  border: 1px solid #334155;
+  border-radius: 7px;
+
+  background: #0f172a;
+  color: #e2e8f0;
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+.filter-group select:hover {
+  border-color: #475569;
+}
+
+.filter-group select:focus {
+  border-color: #3b82f6;
+
+  box-shadow:
+    0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+
+.clear-button {
+  padding: 11px 18px;
+
+  border: 1px solid #334155;
+  border-radius: 7px;
+
+  background: transparent;
+  color: #94a3b8;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.clear-button:hover {
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+/* Logs card */
+
+.logs-card {
+  overflow: hidden;
+
+  background: rgba(15, 23, 42, 0.88);
+
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+}
+
+/* Table header */
+
+.table-header {
+  min-height: 72px;
+
+  padding: 17px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #1e293b;
+}
+
+.table-header h3 {
+  font-size: 15px;
+  color: #f1f5f9;
+}
+
+.table-header span {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #64748b;
+  font-size: 12px;
+}
+
+.refresh {
+  font-size: 12px;
+  color: #22c55e;
+}
+
+/* Table */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.log-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 900px;
+}
+
+.log-table th {
+  padding: 14px 20px;
+
+  text-align: left;
+
+  background: #111827;
+
+  border-bottom: 1px solid #1e293b;
+
+  color: #64748b;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.log-table td {
+  padding: 15px 20px;
+
+  border-bottom: 1px solid #172033;
+
+  font-size: 13px;
+
+  color: #cbd5e1;
+}
+
+.log-table tbody tr {
+  transition: background 0.15s;
+}
+
+.log-table tbody tr:hover {
+  background: rgba(30, 41, 59, 0.55);
+}
+
+.log-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Timestamp */
+
+.timestamp {
+  color: #64748b !important;
+
+  white-space: nowrap;
+
+  font-family: monospace;
+}
+
+/* Service */
+
+.service-name {
+  padding: 5px 9px;
+
+  border-radius: 5px;
+
+  background: #172033;
+
+  color: #93c5fd;
+
+  font-family: monospace;
+
+  font-size: 12px;
+}
+
+/* Message */
+
+.message {
+  max-width: 500px;
+
+  color: #cbd5e1 !important;
+}
+
+/* Level badges */
+
+.level-badge {
+  display: inline-block;
+
+  min-width: 58px;
+
+  padding: 5px 8px;
+
+  border-radius: 5px;
+
+  text-align: center;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.04em;
+}
+
+.level-badge.info {
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+}
+
+.level-badge.warn {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+}
+
+.level-badge.error {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+}
+
+.level-badge.debug {
+  background: rgba(168, 85, 247, 0.12);
+  color: #c084fc;
+}
+
+/* Response time */
+
+.response {
+  color: #94a3b8;
+
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.response.slow {
+  color: #f87171;
+  font-weight: 600;
+}
+
+/* Empty state */
+
+.empty-state {
+  padding: 55px !important;
+
+  text-align: center;
+
+  color: #64748b !important;
+}
+
+/* Footer */
+
+footer {
+  padding: 22px;
+
+  text-align: center;
+
+  border-top: 1px solid #1e293b;
+
+  color: #475569;
+
+  font-size: 12px;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+  .header {
+    padding: 0 20px;
+  }
+
+  .header p {
+    display: none;
+  }
+
+  .dashboard {
+    width: 92%;
+    padding-top: 25px;
+  }
+
+  .page-title {
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .page-title h2 {
+    font-size: 22px;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .clear-button {
+    width: 100%;
+  }
+
+  .table-header {
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
