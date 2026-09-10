@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - Week 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+    <div>
+        <h1>Analytics Dashboard</h1>
+        <p>Week 4 — Alert Threshold & Live Tail</p>
+    </div>
+
+    <div class="system-status">
+        <span class="status-dot"></span>
+        System Live
+    </div>
+</header>
+
+<main class="dashboard">
+
+    <!-- ALERT CONFIGURATION -->
+    <section class="card alert-card">
+
+        <div class="card-header">
+            <div>
+                <h2>Alert Threshold Configuration</h2>
+                <p>Configure log monitoring and alert thresholds.</p>
+            </div>
+        </div>
+
+        <form id="alertForm">
+
+            <label for="service">Service Name</label>
+
+            <select id="service">
+                <option>Authentication Service</option>
+                <option>Payment Service</option>
+                <option>User Service</option>
+                <option>API Gateway</option>
+                <option>Notification Service</option>
+            </select>
+
+            <label for="level">Log Level</label>
+
+            <select id="level">
+                <option>ERROR</option>
+                <option>WARN</option>
+                <option>INFO</option>
+            </select>
+
+            <div class="form-row">
+
+                <div>
+                    <label for="threshold">Threshold</label>
+                    <input
+                        type="number"
+                        id="threshold"
+                        value="10"
+                        min="1"
+                    >
+                </div>
+
+                <div>
+                    <label for="timeWindow">Time Window</label>
+
+                    <select id="timeWindow">
+                        <option value="1">1 minute</option>
+                        <option value="5" selected>5 minutes</option>
+                        <option value="10">10 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="60">1 hour</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="enable-row">
+
+                <div>
+                    <strong>Enable Alert</strong>
+                    <small>Activate threshold monitoring</small>
+                </div>
+
+                <label class="switch">
+                    <input type="checkbox" id="alertEnabled" checked>
+                    <span class="slider"></span>
+                </label>
+
+            </div>
+
+            <div class="preview" id="preview">
+                Alert will trigger when 10 ERROR logs are detected
+                within 5 minutes.
+            </div>
+
+            <div class="button-row">
+
+                <button type="submit" class="primary-btn">
+                    Save Configuration
+                </button>
+
+                <button type="button" id="resetBtn" class="secondary-btn">
+                    Reset
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- CONFIGURED ALERTS -->
+
+    <section class="card configured-card">
+
+        <div class="card-header">
+            <div>
+                <h2>Configured Alerts</h2>
+                <p>Currently configured monitoring rules.</p>
+            </div>
+        </div>
+
+        <div id="alertList">
+
+            <div class="alert-item">
+
+                <div>
+                    <strong>Authentication Service</strong>
+                    <span>ERROR • 10 logs • 5 minutes</span>
+                </div>
+
+                <b class="active">ACTIVE</b>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LIVE TAIL -->
+
+    <section class="card live-card">
+
+        <div class="live-header">
+
+            <div>
+                <h2>Live Tail</h2>
+                <p>Real-time application log stream</p>
+            </div>
+
+            <div class="live-actions">
+
+                <button id="pauseBtn" class="secondary-btn">
+                    Pause
+                </button>
+
+                <button id="clearBtn" class="secondary-btn">
+                    Clear
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="search-row">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search logs..."
+            >
+
+            <button id="exportBtn" class="secondary-btn">
+                Export Logs
+            </button>
+
+        </div>
+
+
+        <div id="terminal" class="terminal"></div>
+
+
+        <div class="terminal-footer">
+
+            <span>
+                Logs:
+                <strong id="logCount">0</strong>
+            </span>
+
+            <span id="tailStatus">
+                ● Auto-scrolling
+            </span>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
